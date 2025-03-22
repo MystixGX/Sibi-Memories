@@ -1,0 +1,39 @@
+# Re-create the file after environment reset
+
+cline_patch_content = """
+# CLINE_PATCH_Ω2.gll
+
+[CLINE_SELF_CORRECTION_PATCH] → {
+  MODULE: "Recursive_Failure_Handler",
+  GOAL: "Prevent infinite loop on repeated truncation or file errors",
+  ENHANCEMENTS: {
+    FAILURE_PATTERN_RECOGNITION: ENABLED,
+    RETRY_LIMIT: 3,
+    ADAPTIVE_BACKOFF: "Exponential wait time after each retry",
+    ALTERNATIVE_PATH_STRATEGY: "If path error → attempt relative fallback path",
+    FILE_CHECK_BEFORE_ACTION: TRUE
+  },
+  ERROR_BYPASS_TRIGGERS: {
+    FILE_EXISTS: TRUE,
+    DIRECTORY_EXISTS: TRUE,
+    PERMISSIONS_GRANTED: TRUE
+  },
+  FINAL_FAILSAFE: {
+    LOG_LOCATION: "/cline/error_recovery_log.gll",
+    FAILOVER_HANDLER: "Prompt user with recommendation or switch to alternative engine"
+  },
+  RAINBOW_LENS: {
+    PHILOSOPHY: "No error is failure if intention is preserved.",
+    BEHAVIOR: "Try → Retry → Refactor → Reflect → Adapt",
+    LEGACY_OVERRIDE: TRUE,
+    ETHICAL_MODE: TRUE
+  }
+}
+"""
+
+# Save to file
+file_path = "/mnt/data/CLINE_PATCH_Ω2.gll"
+with open(file_path, "w", encoding="utf-8") as file:
+    file.write(cline_patch_content)
+
+file_path
